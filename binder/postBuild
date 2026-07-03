@@ -16,4 +16,4 @@ cat > "${KERNEL_PYTHON_PREFIX}/etc/jupyter/jupyter_server_config.d/binder_launch
 EOF
 
 "${KERNEL_PYTHON_PREFIX}/bin/jupyter" server extension list
-Rscript -e "IRkernel::installspec(user = FALSE)"
+Rscript -e "IRkernel::installspec(user = TRUE)"
