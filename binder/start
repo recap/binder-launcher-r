@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -eux
+
+mkdir -p "$HOME/workspace"
+
+exec "$@"

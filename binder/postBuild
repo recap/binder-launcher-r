@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -eux
+
+"${KERNEL_PYTHON_PREFIX}/bin/python" -m pip install "${REPO_DIR:-/home/jovyan/src}"
+
+mkdir -p "${KERNEL_PYTHON_PREFIX}/etc/jupyter/jupyter_server_config.d"
+
+cat > "${KERNEL_PYTHON_PREFIX}/etc/jupyter/jupyter_server_config.d/binder_launcher.json" <<'EOF'
+{
+  "ServerApp": {
+    "jpserver_extensions": {
+      "binder_launcher": true
+    }
+  }
+}
+EOF
+
+"${KERNEL_PYTHON_PREFIX}/bin/jupyter" server extension list
+
