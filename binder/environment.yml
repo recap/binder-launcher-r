@@ -1,0 +1,21 @@
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.10
+  - jupyterlab
+  - jupyter-server
+  - pip
+
+  # R stack
+  - r-base=4.3
+  - r-tidyverse
+  - r-irkernel
+  - r-raster
+  - r-sf
+  - r-rnaturalearth
+  - r-maxnet
+  - r-remotes
+
+  # optional but useful
+  - git
