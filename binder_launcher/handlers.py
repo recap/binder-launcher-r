@@ -21,6 +21,13 @@ WRAPPER_FILES = {
     "pyproject.toml",
     "README.md",
     "binder_launcher.json",
+    "Makefile",
+    "LICENSE",
+    "Dockerfile",
+    "docker-compose.yml",
+    "scripts",
+    "defs",
+    "docs"
 }
 
 # Reserved query parameters understood by the launcher.
@@ -181,6 +188,10 @@ def stage_data_files(work: Path, data_json: str | None, log):
 
         if parsed.scheme not in {"https", "http"}:
             raise ValueError(f"Unsupported URL scheme for {url!r}")
+
+        if not spec.get("path"):
+            log.info("No path specified for %s; using filename from URL", url)
+            continue
 
         relative_path = spec.get("path") or filename_from_url(url)
 
